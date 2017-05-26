@@ -20,5 +20,19 @@ describe('fizzBuzzer Test',function(){
       answer.should.equal(input.expected);
     });
   });
+  it('return number when not divisible by 3,5,15',function(){
+    const notDivArray = [1,2,11,7,22];
+    notDivArray.forEach(el=>{
+      const answer = fizzBuzz(el);
+      answer.should.equal(el);
+    });
+  });
+  it('input != number should throw error', function(){
+    const NaNarray = ['a',{'foo':'bar'},['a',2,3],null,undefined];
+    NaNarray.forEach(el =>{
+      //console.log(typeof el);
+      (function(){fizzBuzz(el);}).should.throw(Error);
+    });
+  });
 });
 
