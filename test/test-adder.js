@@ -1,7 +1,7 @@
 const should = require('chai').should();
 
 const adder = require('../adder');
-
+const fizzBuzz = require('../fizzBuzzer');
 
 // unit tests for our `adder` function
 describe('adder', function() {
@@ -33,8 +33,21 @@ describe('adder', function() {
     // prove that an error is raised for bad inputs
     badInputs.forEach(function(input) {
       (function() {
-          adder(input[0], input[1])
+          adder(input[0], input[1]);
       }).should.throw(Error);
+    });
+  });
+});
+describe('fizzBuzzer Test',function(){
+  it('divisible by 15 should print fizz-buzz',function(){
+    const numArray= [
+      {num:15, expected:'fizz-buzz'},
+      {num:30, expected:'fizz-buzz'},
+      {num:45, expected:'fizz-buzz'}      
+    ];
+    numArray.forEach(input=>{
+      const answer = fizzBuzz(input.num);
+      answer.should.equal(input.expected);
     });
   });
 });
